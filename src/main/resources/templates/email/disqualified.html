@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Hi <span th:text="${displayName}">User</span>,</h2>
+<p>You have been disqualified from <strong th:text="${tournamentName}">Tournament</strong>.</p>
+<p>Reason: <span th:text="${reason}">reason</span></p>
+<p>If you believe this is a mistake, please contact support.</p>
+</body>
+</html>

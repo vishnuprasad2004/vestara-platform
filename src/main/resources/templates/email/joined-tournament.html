@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Hi <span th:text="${displayName}">User</span>,</h2>
+<p>You have successfully joined <strong th:text="${tournamentName}">Tournament</strong>!</p>
+<p>Starting capital: $<span th:text="${initialCapital}">10000</span></p>
+<p>Tournament starts: <span th:text="${startDate}">date</span></p>
+<p>You will receive an email when trading begins.</p>
+</body>
+</html>
