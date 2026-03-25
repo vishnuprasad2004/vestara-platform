@@ -115,7 +115,7 @@ public class TournamentController {
     // ── Cancel ────────────────────────────────────────────────────
 
     @PostMapping("/{id}/cancel")
-    @PreAuthorize("hasAuthority('tournament:cancel')")
+    @PreAuthorize("hasAuthority('tournament:cancel') or hasAuthority('tournament:cancel:own')")
     @Operation(summary = "Cancel a tournament")
     public ResponseEntity<ApiResponse<TournamentDTO>> cancel(
             @PathVariable Long id,

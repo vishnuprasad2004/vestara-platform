@@ -206,10 +206,15 @@ public class TournamentServiceImpl implements TournamentService {
             CancelTournamentRequest request,
             UserPrincipal principal
     ) {
-        Tournament tournament = tournamentRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        ResourceNotFoundException.Code.TOURNAMENT_NOT_FOUND, id
-                ));
+        Tournament tournament;
+        if(principal.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("tournament:cancel"))) {
+            tournament = tournamentRepository.findById(id)
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            ResourceNotFoundException.Code.TOURNAMENT_NOT_FOUND, id
+                    ));
+        } else {
+            tournament = findOwnedTournament(id, principal);
+        }
 
         if (tournament.getStatus() == TournamentStatus.COMPLETED) {
             throw new TournamentException(TournamentException.Code.CANNOT_CANCEL);

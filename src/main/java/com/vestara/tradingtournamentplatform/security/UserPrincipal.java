@@ -120,7 +120,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
                     new SimpleGrantedAuthority("tournament:read"),
                     new SimpleGrantedAuthority("tournament:create"),
                     new SimpleGrantedAuthority("tournament:update:own"),
-                    new SimpleGrantedAuthority("tournament:delete:own"),
+                    new SimpleGrantedAuthority("tournament:cancel:own"),
                     new SimpleGrantedAuthority("tournament:join"),
                     new SimpleGrantedAuthority("trade:execute"),
                     new SimpleGrantedAuthority("trade:read"),
