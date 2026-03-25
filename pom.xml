@@ -13,11 +13,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.app</groupId>
-    <artifactId>trading-tournament-platform</artifactId>
+    <groupId>com.vestera</groupId>
+    <artifactId>vestara-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>trading-tournament-platform</name>
-    <description>Trading Tournament Platform</description>
+    <name>vestara-platform</name>
+    <description>Vestera - Trading Tournament Platform</description>
     <packaging>jar</packaging>
 
     <properties>

@@ -98,7 +98,7 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%X{correlationId}] %-5level %logger{36} - %msg%n"
   level:
     root: WARN
-    com.app.tradingtournament: INFO
+    com.vestara.tradingtournamentplatform: INFO
 
 ---
 spring:
@@ -125,7 +125,7 @@ spring:
 
 logging:
   level:
-    com.app.tradingtournament: DEBUG
+    com.vestara.tradingtournamentplatform: DEBUG
     org.springframework.security: DEBUG
     org.hibernate.SQL: DEBUG
 
@@ -176,7 +176,7 @@ app:
 
 logging:
   level:
-    com.app.tradingtournament: INFO
+    com.vestara.tradingtournamentplatform: INFO
     root: ERROR
 
 resilience4j:

@@ -73,7 +73,7 @@
 
 
     <!-- ================= APPLICATION LOGGER ================= -->
-    <logger name="com.app.tradingtournament" level="INFO" additivity="false">
+    <logger name="com.vestara.tradingtournamentplatform" level="INFO" additivity="false">
         <appender-ref ref="APP_FILE"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
