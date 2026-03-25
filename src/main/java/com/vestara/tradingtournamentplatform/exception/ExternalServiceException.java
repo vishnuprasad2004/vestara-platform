@@ -8,8 +8,9 @@ public class ExternalServiceException extends AppException {
 
     @Getter
     public enum Code {
-        YAHOO_FINANCE_UNAVAILABLE("Market data service is currently unavailable, please try again later"),
-        YAHOO_FINANCE_INVALID_SYMBOL("No market data found for this symbol");
+        MARKET_DATA_UNAVAILABLE("Market data service is currently unavailable, please try again later"),
+        MARKET_DATA_INVALID_SYMBOL("No market data found for this symbol"),
+        AI_SERVICE_UNAVAILABLE("AI assistant is currently unavailable. Please try again.");
 
         private final String defaultMessage;
 

@@ -51,7 +51,7 @@ public class MarketDataServiceImpl implements MarketDataService {
 
             if (response == null || !response.containsKey("c")) {
                 throw new ExternalServiceException(
-                        ExternalServiceException.Code.YAHOO_FINANCE_INVALID_SYMBOL
+                        ExternalServiceException.Code.MARKET_DATA_INVALID_SYMBOL
                 );
             }
 
@@ -61,7 +61,7 @@ public class MarketDataServiceImpl implements MarketDataService {
 
             if (price.compareTo(BigDecimal.ZERO) <= 0) {
                 throw new ExternalServiceException(
-                        ExternalServiceException.Code.YAHOO_FINANCE_INVALID_SYMBOL
+                        ExternalServiceException.Code.MARKET_DATA_INVALID_SYMBOL
                 );
             }
 
@@ -73,7 +73,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         } catch (Exception e) {
             log.error("Finnhub error for symbol {}: {}", symbol, e.getMessage());
             throw new ExternalServiceException(
-                    ExternalServiceException.Code.YAHOO_FINANCE_UNAVAILABLE
+                    ExternalServiceException.Code.MARKET_DATA_UNAVAILABLE
             );
         }
     }
@@ -82,7 +82,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         log.warn("Circuit open or retries exhausted for symbol: {}. " +
                 "Reason: {}", symbol, ex.getMessage());
         throw new ExternalServiceException(
-                ExternalServiceException.Code.YAHOO_FINANCE_UNAVAILABLE
+                ExternalServiceException.Code.MARKET_DATA_UNAVAILABLE
         );
     }
 
@@ -123,7 +123,7 @@ public class MarketDataServiceImpl implements MarketDataService {
         } catch (Exception e) {
             log.error("Finnhub search error for query {}: {}", query, e.getMessage());
             throw new ExternalServiceException(
-                    ExternalServiceException.Code.YAHOO_FINANCE_UNAVAILABLE
+                    ExternalServiceException.Code.MARKET_DATA_UNAVAILABLE
             );
         }
     }
