@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -151,7 +154,51 @@ public class MarketDataServiceImpl implements MarketDataService {
         }
     }
 
+    @Override
+    public List<Map<String, String>> getCompanyNews(String symbol) {
+        log.debug("Fetching live company news for symbol: {}", symbol);
+
+        Map response = restClient.get()
+                .uri("/company-news?symbol={symbol}&from={from}&to={to}&token={token}",
+                        symbol.toUpperCase(), getPreviousDate(), getCurrentDate(),  apiKey)
+                .retrieve()
+                .body(Map.class);
+
+        if (response == null || !response.containsKey("result")) {
+            return List.of();
+        }
+
+        List<Map<String, Object>> results =
+                (List<Map<String, Object>>) response.get("result");
+
+        List<Map<String, String>> mapped = new ArrayList<>();
+
+        int limit = Math.min(10, results.size());
+
+        for (int i = 0; i < limit; i++) {
+            Map<String, Object> item = results.get(i);
+
+            mapped.add(Map.of(
+                    "source", str(item.get("symbol")),
+                    "summary", str(item.get("description")),
+                    "url", str(item.get("type"))
+            ));
+        }
+
+        return mapped;
+    }
+
     // ── Util ──────────────────────────────────────────────────────
+
+    public String getCurrentDate() {
+        return LocalDate.now(ZoneId.of("America/New_York"))
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    public String getPreviousDate() {
+        return LocalDate.now(ZoneId.of("America/New_York")).minusDays(2)
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
 
     private String str(Object obj) {
         return obj != null ? obj.toString() : "";

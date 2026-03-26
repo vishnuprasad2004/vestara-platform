@@ -7,6 +7,7 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -32,6 +33,18 @@ public class MarketTools {
       return Map.of(
               "symbol", symbol,
               "price", price
+      );
+   }
+
+   @Tool(description = "Fetch recent news for a company by its stock symbol. " +
+           "Use when the user asks about latest developments, announcements, or market sentiment. " +
+           "If the question is about price, valuation, or trading decisions, do NOT use this tool. " +
+           "Returns a concise list of up to 10 news items.")
+   public Map<String, Object> getCompanyNews(String symbol) {
+      List<Map<String, String>> data = marketDataService.getCompanyNews(symbol);
+      return Map.of(
+              "symbol", symbol,
+              "data", data
       );
    }
 }

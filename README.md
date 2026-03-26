@@ -15,7 +15,7 @@ real-time NYSE stocks in time-bound tournaments without financial risk.
 ## Tech Stack
 Backend: Java 21, Spring Boot 3.5, Spring Security, Hibernate JPA, PostgresDB
 Frontend: React 19, TypeScript, TanStack Query, Tailwind CSS  
-AI: Spring AI with Openrouter API
+AI Agent: Spring AI with Openrouter API
 Infrastructure: Resilience4j, Caffeine Cache
 
 

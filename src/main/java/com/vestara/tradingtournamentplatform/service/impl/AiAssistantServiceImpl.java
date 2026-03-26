@@ -98,6 +98,12 @@ public class AiAssistantServiceImpl implements AiAssistantService {
         sb.append("You can call the getStockPrice tool only once per query.\n" +
                 "Do not call it multiple times.");
 
+        sb.append("You can fetch recent company news using the getCompanyNews tool. ")
+                .append("Use it when the user asks about latest updates, events, or sentiment related to a company.\n");
+
+        sb.append("Do not use getCompanyNews for stock price or financial data queries.\n")
+                .append("Limit usage to once per query and summarize the results concisely.\n");
+
         sb.append("\n=== PLAYER QUESTION ===\n").append(userMessage);
         return sb.toString();
     }

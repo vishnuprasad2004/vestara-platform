@@ -14,4 +14,7 @@ public interface MarketDataService {
 
     // Pre-warm cache for a list of symbols (called by scheduler)
     void prefetchPrices(List<String> symbols);
+
+    // Get Company News for a symbol - consumed by the AI Agent
+    List<Map<String, String>> getCompanyNews(String symbol);
 }
